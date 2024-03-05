@@ -39,3 +39,8 @@ The latest bandwidth supports:
 ## Apple Silicon
 
   Apple's unified memory architecture puts the DRAM closer to the CPU, allowing for high bandwidth and low latency. In the case of the M1, sequential reads from main memory hover around 50 GB/second and writes are around 30 GB/second.
+
+## License
+
+![Static Badge](https://img.shields.io/badge/GPL-Malt?style=for-the-badge&label=License)
+
