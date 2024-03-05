@@ -7,12 +7,12 @@ This program is open source and covered by the GPL license. Although I wrote it 
 
 The latest bandwidth supports:
 
-    * 32- and 64-bit x86 running GNU/Linux
-    * 64-bit RISC-V running Linux
-    * 32- and 64-bit ARM running Linux
-    * 64-bit ARM computers running MacOS
-    * 64-bit x86 running MacOS
-    * 64-bit x86 running Windows
+*  32- and 64-bit x86 running GNU/Linux
+*  64-bit RISC-V running Linux
+*  32- and 64-bit ARM running Linux
+*  64-bit ARM computers running MacOS
+*  64-bit x86 running MacOS
+*  64-bit x86 running Windows
 
 ## Quick Start with Terminal
 
