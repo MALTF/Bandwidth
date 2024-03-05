@@ -5,12 +5,15 @@ a memory bandwidth benchmark
 
 ## Quick Start with Terminal
 
-cd ./bandwidth-1.14.10
+```
+  cd ./bandwidth-1.14.10
+  
+  ./configure 
+  
+  make bandwidth64
+  
+  ./bandwidth64 --h   
+  
+  ./bandwidth64 --fastest
 
-./configure 
-
-make bandwidth64
-
-./bandwidth64 --h   
-
-./bandwidth64 --fastest
+```
