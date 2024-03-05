@@ -1,7 +1,7 @@
 # Bandwidth <a href="bandwidth-1.14.10"><img src="https://img.shields.io/badge/PASS-Malt?style=for-the-badge&label=BUILD&labelColor=%230A69DA"></a>
   a memory bandwidth benchmark
   
-<img src="/Apple Mac15,9 Apple M3 Max aarch64 Darwin 14.3.1.bmp" alt="Darwin" width="100%">
+<img src="/Apple Mac15,9 Apple M3 Max aarch64 Darwin 14.3.1.bmp" alt="Darwin" width="90%">
 
 [zsmith.co](https://zsmith.co/bandwidth.php)
 
