@@ -1,0 +1,10 @@
+
+TO DO
+-----
+
+* Model3D cylinder, cone; rotation.
+* Queue.
+* Image expander.
+* Add FrugalWidgets code.
+* JSON parser.
+

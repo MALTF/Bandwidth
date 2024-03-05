@@ -1,0 +1,34 @@
+#============================================================================
+# bandwidth, a benchmark to estimate memory transfer bandwidth.
+# Copyright (C) 2005-2019 by Zack T Smith.
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+#
+# The author may be reached at 1 at zsmith dot co.
+#============================================================================
+
+CFLAGS= -g -Wno-conditional-type-mismatch -Wall -I.
+SRC=main.c 
+OBJ=main.o 
+AS=nasm
+ARM_AS=as
+ARM_CC=gcc
+
+bandwidth32: Testing.c TestingARM.c ${SRC} routines-arm-32bit.asm libOOC.a
+	${ARM_AS} -march=armv7a -mfpu=neon routines-arm-32bit.asm -o routines-arm-32bit.o
+	${ARM_CC} ${CFLAGS} -c -I ./OOC Testing.c TestingARM.c
+	${ARM_CC} -L./OOC routines-arm-32bit.o Testing.o TestingARM.o ${SRC} ${CFLAGS} -o bandwidth32 ${LIB}
+
+include Makefile-OOC

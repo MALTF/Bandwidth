@@ -1,0 +1,108 @@
+#!/bin/bash
+
+rm -f Makefile-config
+touch Makefile-config
+
+TMPFILE=./ooc.c
+
+#-------------------
+# Look for OpenGL:
+#
+echo "#include <stdio.h>" > $TMPFILE
+echo "#include <GL/gl.h>" >> $TMPFILE
+echo "int main(){ glClear(0); return 0;}" >> $TMPFILE
+if gcc -I/usr/include -I/usr/local/include $TMPFILE -lGL 2> /dev/null; then
+	echo Detected OpenGL.
+	echo "LIB+=-lGL " >> Makefile-config
+	rm -f a.out a.exe
+else
+	echo "Missing OpenGL  	(type: sudo apt install libopengl-dev)"
+fi
+rm $TMPFILE
+
+#-------------------
+# Look for GLUT:
+#
+echo "#include <stdio.h>" > $TMPFILE
+echo "#include <GL/gl.h>" >> $TMPFILE
+echo "#include <GL/glu.h>" >> $TMPFILE
+echo "#include <GL/glext.h>" >> $TMPFILE
+echo "#include <GL/glut.h>" >> $TMPFILE
+echo "int main(){ glClear(0); glutMainLoop(); return 0;}" >> $TMPFILE
+if gcc -I/usr/include -I/usr/local/include $TMPFILE -lGL -lglut 2> /dev/null; then
+	echo Detected FreeGLUT.
+	echo "LIB+=-lglut " >> Makefile-config
+	rm -f a.out a.exe
+else
+	echo "Missing FreeGLUT	(type: sudo apt install freeglut3-dev)"
+fi
+rm $TMPFILE
+
+#-------------------
+# Look for jpeglib:
+#
+echo "#include <stdio.h>" > $TMPFILE
+echo "#include <jpeglib.h>" >> $TMPFILE
+echo "int main(){return 0;}" >> $TMPFILE
+if gcc -I/usr/include -I/usr/local/include $TMPFILE -ljpeg 2> /dev/null; then
+	echo Detected jpeglib.
+	echo "LIB+=-ljpeg " >> Makefile-config
+	rm -f a.out a.exe
+else
+	echo "Missing jpeglib	(type: sudo apt install libjpeg-dev)"
+fi
+rm $TMPFILE
+
+#-------------------
+# Look for libtiff:
+#
+echo "#include <stdio.h>" > $TMPFILE
+echo "#include <tiff.h>" >> $TMPFILE
+echo "#include <tiffio.h>" >> $TMPFILE
+echo "int main(){TIFF *tif = TIFFOpen(\"PIA25970.tif\", \"r\"); return 0;}" >> $TMPFILE
+if gcc $TMPFILE -ltiff 2> /dev/null; then
+	echo Detected libtiff.
+	echo "LIB+=-ltiff " >> Makefile-config
+	rm -f a.out a.exe
+else
+	echo "Missing libtiff	(type: sudo apt install libtiff-dev)"
+fi
+rm $TMPFILE
+
+#-------------------
+# Look for libcurl:
+#
+echo "#include <stdio.h>" > $TMPFILE
+echo "#include <curl/curl.h>" >> $TMPFILE
+echo "int main(){return 0;}" >> $TMPFILE
+if gcc -I/usr/include -I/usr/local/include $TMPFILE -lcurl 2> /dev/null; then
+	echo Detected libcurl.
+	echo "LIB+=-lcurl " >> Makefile-config
+	rm -f a.out a.exe
+else
+	echo "Missing libcurl."
+fi
+rm $TMPFILE
+
+#-------------------
+# Look for freetype2:
+#
+echo "#include <stdio.h>" > $TMPFILE
+echo "#include <ft2build.h>" >> $TMPFILE
+echo "#include FT_GLYPH_H" >> $TMPFILE
+echo "#include FT_TRUETYPE_DRIVER_H" >> $TMPFILE
+echo "int main(){" >> $TMPFILE
+echo "FT_Bitmap *bitmap;" >> $TMPFILE
+echo "FT_BitmapGlyphRec *record;" >> $TMPFILE
+echo "FT_Face face;" >> $TMPFILE
+echo "FT_Glyph glyph;" >> $TMPFILE
+echo "}" >> $TMPFILE
+if gcc -I/usr/include -I/usr/include/freetype2 $TMPFILE 2> /dev/null; then
+	echo Detected Freetype2.
+	echo "LIB+=-lfreetype " >> Makefile-config
+	rm -f a.out a.exe
+else
+	echo Missing Freetype2.
+fi
+rm $TMPFILE
+

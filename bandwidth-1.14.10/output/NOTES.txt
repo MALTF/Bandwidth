@@ -1,0 +1,12 @@
+
+The Apple Silicon processors' speeds were reported by Apple's utility program /usr/bin/powermetrics.
+
+Windows tests must always be done after 
+A) You install Cygwin 64-bit with gcc, make, and nasm.
+B) You put Windows in performance mode.
+C) You compile & run the program within Cygwin.
+
+Android tests run have to be run inside the Termux app,
+which sets up a Linux-like environment that can compile & run 
+aarch64 ELF executables natively.
+
