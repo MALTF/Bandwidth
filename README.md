@@ -42,5 +42,5 @@ The latest bandwidth supports:
 
 ## License
 
-![Static Badge](https://img.shields.io/badge/GPL-Malt?style=for-the-badge&label=License)
+<a href="LICENSE"><img src="https://img.shields.io/badge/GPL-Malt?style=for-the-badge&label=License"></a>
 
